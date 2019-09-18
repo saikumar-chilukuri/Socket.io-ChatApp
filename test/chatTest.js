@@ -27,13 +27,11 @@ describe("Chat Server", function() {
 
         client2.on("connect", data => {
           client2.emit("connection name", chatUser2);
-          done();
         });
 
         client2.on("new user", function(username) {
           username.should.equal(chatUser2.name + " has joined.");
           client2.disconnect();
-          done();
         });
       });
 
@@ -44,9 +42,9 @@ describe("Chat Server", function() {
         if (numUsers === 2) {
           username.should.equal(chatUser2.name + " has joined.");
           client1.disconnect();
-          done();
         }
       });
+      done();
     })
   );
 
@@ -85,6 +83,7 @@ describe("Chat Server", function() {
           });
         });
       });
+      done();
     })
   );
 });
